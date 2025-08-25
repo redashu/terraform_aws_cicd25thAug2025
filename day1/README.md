@@ -119,3 +119,21 @@ Terraform will perform the following actions:
       + associate_public_ip_address          = (known after apply)
       + availability_zone                    = (known after apply)
 ```
+
+### if you are looking for deleting Infra 
+
+```
+terraform  destroy 
+aws_instance.ashu-name: Refreshing state... [id=i-0ec12a7fda078dc43]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.ashu-name will be destroyed
+  - resource "aws_instance" "ashu-name" {
+      - ami                                  = "ami-0b016c703b95ecbe4" -> null
+      - arn                                  = "arn:aws:ec2:us-
+
+```
