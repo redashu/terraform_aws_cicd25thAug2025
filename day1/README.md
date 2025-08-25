@@ -137,3 +137,20 @@ Terraform will perform the following actions:
       - arn                                  = "arn:aws:ec2:us-
 
 ```
+
+### Understanding terraform centric features in HCL 
+
+<img src="hcl1.png">
+
+### Creating key-pair using ssh-keygen command 
+
+```
+ssh-keygen  -t rsa   -b 4096  -f ~/.ssh/ashu-key
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/ec2-user/.ssh/ashu-key
+Your public key has been saved in /home/ec2-user/.ssh/ashu-key.pub
+The key fingerprint is:
+
+```
