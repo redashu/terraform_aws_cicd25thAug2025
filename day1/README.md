@@ -51,3 +51,8 @@ Default output format [None]:
 [ec2-user@ip-172-31-41-146 ashu-codes]$ 
 
 ```
+
+### terraform machine connecting to aws 
+
+<img src="aws1.png">
+
