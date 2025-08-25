@@ -79,3 +79,43 @@ you run "terraform init" in the future.
 
 <img src="tf4.png">
 
+### Understanding Resources under provider 
+
+<img src="res1.png">
+
+### to create simple ec2 machine 
+
+```
+terraform init 
+==>
+terraform  plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.ashu-name will be created
+  + resource "aws_instance" "ashu-name" {
+      + ami                                  = "ami-0b016c703b95ecbe4"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+
+====>
+
+ terraform  apply 
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.ashu-name will be created
+  + resource "aws_instance" "ashu-name" {
+      + ami                                  = "ami-0b016c703b95ecbe4"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+```
