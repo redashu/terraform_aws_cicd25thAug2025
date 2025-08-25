@@ -56,3 +56,26 @@ Default output format [None]:
 
 <img src="aws1.png">
 
+## Terrform workflows --> INit 
+
+```
+ec2-user@ip-172-31-41-146 ashu-codes]$ ls
+provider.tf
+
+[ec2-user@ip-172-31-41-146 ashu-codes]$ terraform  init 
+Initializing the backend...
+Initializing provider plugins...
+- Finding hashicorp/aws versions matching "6.10.0"...
+- Installing hashicorp/aws v6.10.0...
+- Installed hashicorp/aws v6.10.0 (signed by HashiCorp)
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+```
+
+### Terraform 4 pillors
+
+<img src="tf4.png">
+
