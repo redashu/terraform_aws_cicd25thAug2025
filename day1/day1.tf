@@ -20,5 +20,10 @@ provider "aws" {
 resource "aws_instance" "ashu-name" {
   ami = "ami-0b016c703b95ecbe4"
   instance_type = "t2.nano"
+
+
+  tags = {
+    Name = "ashu-linux-vm1"
+  }
   
 }
