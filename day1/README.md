@@ -39,3 +39,15 @@ password:
 cert: false
 
 ```
+
+### from terraform machine configure auth to aws creds
+
+```
+ec2-user@ip-172-31-41-146 ashu-codes]$ aws configure 
+AWS Access Key ID [****************OPVA]: 
+AWS Secret Access Key [****************c6B+]: 
+Default region name [ap-south-1]: us-east-1
+Default output format [None]: 
+[ec2-user@ip-172-31-41-146 ashu-codes]$ 
+
+```
