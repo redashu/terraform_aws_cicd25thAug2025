@@ -163,3 +163,16 @@ resource "aws_instance" "ashu-name" {
 
 <img src="vpc1.png">
 
+## Creating vpc -- 
+
+### preparing directory /file structure 
+
+```
+tree  ashu-vpc/
+ashu-vpc/
+├── main.tf
+├── provider.tf
+├── terraform.tfvars
+└── variables.tf
+
+```
