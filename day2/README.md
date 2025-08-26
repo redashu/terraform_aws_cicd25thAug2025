@@ -97,3 +97,39 @@ Initializing provider plugins...
 - Using previously-installed hashicorp/local v2.5.3
 - Using previously-installed hashicorp/tls v4.1.0
 ```
+
+## Understanding terraform tfstate file 
+
+<img src="tfstate.png">
+
+### dealing with terraform state options 
+
+```
+ec2-user@ip-172-31-41-146 ashu-codes]$ terraform state list
+aws_instance.ashu-name
+aws_key_pair.example
+local_file.ashu-private-key
+tls_private_key.ashu-example
+[ec2-user@ip-172-31-41-146 ashu-codes]$ terraform state  show  aws_instance.ashu-name
+# aws_instance.ashu-name:
+resource "aws_instance" "ashu-name" {
+    ami                                  = "ami-0b016c703b95ecbe4"
+    arn                                  = "arn:aws:ec2:us-east-2:992382386705:instance/i-0f676f9c5942dd8f4"
+    associate_public_ip_address          = true
+    availability_zone                    = "us-east-2b"
+    disable_api_stop                     = false
+    disable_api_termination              = false
+    ebs_optimized                        = false
+
+```
+### more terraform commands 
+
+```
+384  terraform plan 
+  385  terraform state list
+  386  terraform state  show  aws_instance.ashu-name
+  387  terraform state list
+  388  terraform  plan  -target=aws_key_pair.example
+  389  terraform apply   -target=aws_key_pair.example
+  390  terraform destroy   -target=aws_key_pair.example
+```
