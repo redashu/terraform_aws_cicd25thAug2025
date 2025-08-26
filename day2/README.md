@@ -133,3 +133,28 @@ resource "aws_instance" "ashu-name" {
   389  terraform apply   -target=aws_key_pair.example
   390  terraform destroy   -target=aws_key_pair.example
 ```
+
+## Understanding variable concept in terraform 
+
+<img src="var.png">
+
+### calling terraform variables values 
+
+<img src="val1.png">
+
+## understanding variables implementations 
+
+<img src="val2.png">
+
+### understanding external file to store terraform variables values 
+
+<img src="val3.png">
+
+### understanding external varaible value file auto-loading system 
+
+<img src="val4.png">
+
+### final tfvars concept 
+
+<img src="val5.png">
+
