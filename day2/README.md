@@ -158,3 +158,8 @@ resource "aws_instance" "ashu-name" {
 
 <img src="val5.png">
 
+
+# Understanding vpc 
+
+<img src="vpc1.png">
+
