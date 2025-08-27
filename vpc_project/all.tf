@@ -45,6 +45,7 @@ variable "private-sb-addr" {
 
 # main section
 # step 1  create VPC 
+# step 1  create VPC 
 resource "aws_vpc" "example" {
     cidr_block = var.vpc-network
     enable_dns_hostnames = true
@@ -62,7 +63,7 @@ resource "aws_subnet" "public_example" {
     map_public_ip_on_launch = true 
     # above line is gonna auto assign public ip to vms
     tags = {
-      Name = "ashu-public-subnet"
+      Name = "${var.vpc-name}-public-subnet"
     }
   
 }
@@ -74,7 +75,7 @@ resource "aws_subnet" "private_example" {
     cidr_block = var.private-sb-addr
     # above line is gonna auto assign public ip to vms
     tags = {
-      Name = "ashu-private-subnet"
+      Name = "${var.vpc-name}-private-subnet"
     }
   
 }
@@ -84,8 +85,7 @@ resource "aws_subnet" "private_example" {
 resource "aws_internet_gateway" "example" {
     vpc_id = aws_vpc.example.id
     tags =  {
-        Name = "ashu-igw"
+        Name = "${var.vpc-name}-igw"
     }
   
 }
-
