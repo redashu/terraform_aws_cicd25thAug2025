@@ -114,3 +114,22 @@ resource "aws_route_table_association" "example" {
   route_table_id = aws_route_table.example.id
   
 }
+
+# for NAT gw -- creating EIP
+
+resource "aws_eip" "example" {
+  domain   = "vpc"
+}
+
+# Creating natGW using EIP also interface in public subnet
+
+resource "aws_nat_gateway" "example" {
+  allocation_id = aws_eip.example.id
+  subnet_id = aws_subnet.public_example.id
+
+  tags = {
+    Name = "${var.vpc-name}-natgw"
+  }
+  # optional but sometimes to check limits and condition good to put
+  depends_on = [ aws_internet_gateway.example ]
+}
