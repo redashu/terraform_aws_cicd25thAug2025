@@ -89,3 +89,20 @@ resource "aws_internet_gateway" "example" {
     }
   
 }
+
+# creatig public route table
+
+# Creating routing table of public subnet 
+
+resource "aws_route_table" "example" {
+  vpc_id = aws_vpc.example.id
+  route  {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.example.id
+  }
+  
+  tags = {
+    Name = "${var.vpc-name}-publicRoute-table"
+  }
+
+}
