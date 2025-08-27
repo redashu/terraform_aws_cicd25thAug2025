@@ -43,6 +43,23 @@ variable "private-sb-addr" {
   
 }
 
+variable "aws-ami" {
+    type = string
+    description = "this is my aws ami id"
+  
+}
+
+variable "aws-instances-size" {
+    type = string
+  
+}
+
+variable "aws-instance-name" {
+    type = string
+  
+}
+
+
 # main section
 # step 1  create VPC 
 # step 1  create VPC 
@@ -153,6 +170,43 @@ resource "aws_route_table" "example-private" {
 
 resource "aws_route_table_association" "example-private" {
   subnet_id = aws_subnet.private_example.id
-  route_table_id = aws_route_table.example-private.vpc_id
+  route_table_id = aws_route_table.example-private.id
+  
+}
+
+# creating ec2 isntance in public subnet
+
+# RSA key of size 4096 bits
+resource "tls_private_key" "example" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+# use above to put public in ec2 
+resource "aws_key_pair" "example" {
+  key_name = "${var.aws-instance-name}-key"
+  #public_key = file("/home/ec2-user/.ssh/ashu-key.pub")
+  public_key = tls_private_key.example.public_key_openssh
+  
+}
+
+# incase you want to save private key as well
+resource "local_file" "ashu-private-key" {
+  content  = tls_private_key.example.private_key_pem
+  filename = "${path.module}/ashu-privateKey.pem"
+  file_permission = "0400"
+}
+
+
+
+resource "aws_instance" "example" {
+  ami = var.aws-ami
+  instance_type = var.aws-instances-size
+  key_name = aws_key_pair.example.key_name
+  subnet_id = aws_subnet.public_example.id
+
+  tags = {
+    Name = var.aws-instance-name
+  }
   
 }
