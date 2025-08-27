@@ -243,5 +243,22 @@ resource "aws_instance" "example" {
   tags = {
     Name = var.aws-instance-name
   }
-  
+  # remote provisioner 
+  provisioner "remote-exec" {
+    inline = [ 
+        "mkdir  -p  ~/ashu/data/webapp",
+        "sudo yum install httpd git -y "
+     ]
+     # defining connection details 
+     connection {
+        type = "ssh"
+        user = "ec2-user"
+        timeout = "3m"
+        host = self.public_ip
+        #private_key = aws_key_pair.example.key_name
+        private_key = file("/home/ec2-user/ashu-codes/ashu-vpc/ashu-privateKey.pem")
+       
+     }
+    
+  }
 }
