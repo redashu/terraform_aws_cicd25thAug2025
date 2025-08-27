@@ -133,3 +133,26 @@ resource "aws_nat_gateway" "example" {
   # optional but sometimes to check limits and condition good to put
   depends_on = [ aws_internet_gateway.example ]
 }
+
+# creating routing table for private subnet using NATgw 
+
+resource "aws_route_table" "example-private" {
+  vpc_id = aws_vpc.example.id
+  route  {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.example.id
+  }
+  
+  tags = {
+    Name = "${var.vpc-name}-privateRoute-table"
+  }
+
+}
+
+# association with private subnet 
+
+resource "aws_route_table_association" "example-private" {
+  subnet_id = aws_subnet.private_example.id
+  route_table_id = aws_route_table.example-private.vpc_id
+  
+}
