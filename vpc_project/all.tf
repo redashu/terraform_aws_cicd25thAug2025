@@ -197,13 +197,48 @@ resource "local_file" "ashu-private-key" {
   file_permission = "0400"
 }
 
+# creating security group 
 
+resource "aws_security_group" "example" {
+  name        = "${var.aws-instance-name}-securityGroup"
+  description = "Allow 22 (ssh) and http (80) as incoming connection"
+  vpc_id      = aws_vpc.example.id
 
+  tags = {
+    Name = "${var.aws-instance-name}-securityGroup"
+  }
+}
+
+# Ingress rule 
+resource "aws_vpc_security_group_ingress_rule" "example-ssh" {
+  security_group_id = aws_security_group.example.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
+
+# egress rule to everywhere 
+
+resource "aws_vpc_security_group_egress_rule" "example-all-ipv4" {
+  security_group_id = aws_security_group.example.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
+
+resource "aws_vpc_security_group_egress_rule" "example-allipv6" {
+  security_group_id = aws_security_group.example.id
+  cidr_ipv6         = "::/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
+# creating ec2 
 resource "aws_instance" "example" {
   ami = var.aws-ami
   instance_type = var.aws-instances-size
   key_name = aws_key_pair.example.key_name
   subnet_id = aws_subnet.public_example.id
+  # association of security group
+  vpc_security_group_ids = [aws_security_group.example.id]
 
   tags = {
     Name = var.aws-instance-name

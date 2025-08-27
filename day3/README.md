@@ -14,3 +14,11 @@ aws_subnet.public_example
 aws_vpc.example
 
 ```
+
+## Creating and associating security group in new vpc -vm 
+
+<img src="t1.png">
+
+## updates in security group aws terraform docs 
+
+<img src="t2.png">
