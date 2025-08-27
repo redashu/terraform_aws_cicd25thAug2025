@@ -232,6 +232,7 @@ resource "aws_vpc_security_group_egress_rule" "example-allipv6" {
   ip_protocol       = "-1" # semantically equivalent to all ports
 }
 # creating ec2 
+# creating ec2 
 resource "aws_instance" "example" {
   ami = var.aws-ami
   instance_type = var.aws-instances-size
@@ -243,13 +244,23 @@ resource "aws_instance" "example" {
   tags = {
     Name = var.aws-instance-name
   }
+  # file provisioner to transfer data from terraform machine to remote 
+  provisioner "file" {
+    source = "./html-sample-app"
+    destination = "/tmp/"
+    
+  }
   # remote provisioner 
   provisioner "remote-exec" {
     inline = [ 
         "mkdir  -p  ~/ashu/data/webapp",
-        "sudo yum install httpd git -y "
+        "sudo yum install httpd git -y ",
+        "sudo cp -rf /tmp/html-sample-app/* /var/www/html/",
+        "sudo systemctl start httpd"
      ]
-     # defining connection details 
+     
+  }
+  # defining connection details 
      connection {
         type = "ssh"
         user = "ec2-user"
@@ -259,6 +270,4 @@ resource "aws_instance" "example" {
         private_key = file("/home/ec2-user/ashu-codes/ashu-vpc/ashu-privateKey.pem")
        
      }
-    
-  }
 }

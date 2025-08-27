@@ -66,3 +66,11 @@ Terraform will perform the following actions:
   # aws_instance.example will be destroyed
 
 ```
+
+## now deploying webapp server in remote linux vm 
+
+### download code in terraform machine 
+```
+git clone  https://github.com/schoolofdevops/html-sample-app.git
+
+```
