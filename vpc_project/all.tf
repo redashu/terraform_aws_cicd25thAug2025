@@ -106,3 +106,11 @@ resource "aws_route_table" "example" {
   }
 
 }
+
+# association of route table with public subnet
+
+resource "aws_route_table_association" "example" {
+  subnet_id = aws_subnet.public_example.id
+  route_table_id = aws_route_table.example.id
+  
+}
