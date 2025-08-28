@@ -103,3 +103,25 @@ my-vpc-id = "vpc-0fc2423d09f6affec"
 [ec2-user@ip-172-31-41-146 day4-code]$ 
 
 ```
+
+
+## loop concept in HCL 
+
+```
+variable "ashu_numbers" {
+    type = list(number)
+    default = [ 10,2,3,4 ]
+  
+}
+
+
+# output section to use above variable 
+
+output "usingLoop" {
+    value = [for i in var.ashu_numbers:
+                "creating ec2 instance  : ${i}"
+            ]
+  
+}
+
+```
