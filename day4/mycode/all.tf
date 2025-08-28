@@ -89,3 +89,21 @@ resource "aws_vpc_security_group_egress_rule" "example-allipv6" {
 }
 
 
+
+
+
+#output section 
+
+# priting vpc id 
+
+output "my-vpc-id" {
+    value = data.aws_vpc.my-vpc.id
+  
+}
+
+# my security group detail 
+
+output "my-securitygroup" {
+    value = "my security group name is ${aws_security_group.allow_tls.name}"
+  
+}

@@ -71,3 +71,35 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 data.aws_vpc.my-vpc
 
 ```
+
+### more commands 
+
+```
+ec2-user@ip-172-31-41-146 day4-code]$ terraform apply --auto-approve 
+data.aws_vpc.my-vpc: Reading...
+data.aws_vpc.my-vpc: Read complete after 2s [id=vpc-0fc2423d09f6affec]
+aws_security_group.allow_tls: Refreshing state... [id=sg-0e217e0e4d63585be]
+aws_vpc_security_group_egress_rule.example-all-ipv4: Refreshing state... [id=sgr-002a33e3ab4660b6c]
+aws_vpc_security_group_ingress_rule.example-ssh: Refreshing state... [id=sgr-0f1372e223557810b]
+aws_vpc_security_group_egress_rule.example-allipv6: Refreshing state... [id=sgr-0271dab9b90022b5a]
+aws_vpc_security_group_ingress_rule.example-http: Refreshing state... [id=sgr-06a7b305bde1740c2]
+
+Changes to Outputs:
+  + my-securitygroup = "my security group name is allow_tls"
+  + my-vpc-id        = "vpc-0fc2423d09f6affec"
+
+You can apply this plan to save these new output values to the Terraform state, without changing any real
+infrastructure.
+
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+my-securitygroup = "my security group name is allow_tls"
+my-vpc-id = "vpc-0fc2423d09f6affec"
+[ec2-user@ip-172-31-41-146 day4-code]$ terraform output 
+my-securitygroup = "my security group name is allow_tls"
+my-vpc-id = "vpc-0fc2423d09f6affec"
+[ec2-user@ip-172-31-41-146 day4-code]$ 
+
+```
