@@ -88,3 +88,16 @@ resource "aws_instance" "example2" {
  1023  history 
 
  ```
+
+ ### Tf state file understanding 
+
+ <img src="tf.png">
+
+ ## understanding remote state conditions 
+
+ 
+ <img src="tf1.png">
+ ```
+ [ec2-user@ip-172-31-41-146 day5]$ terraform  init  -migrate-state 
+Initializing the backend...
+```
