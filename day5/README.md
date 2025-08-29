@@ -1,1 +1,9 @@
-# terraform_aws_cicd25thAug2025
+## Revision 
+
+### terraform 1 
+
+<img src="rev1.png">
+
+### terraform  refresh understanding 
+
+<img src="rev2.png">
