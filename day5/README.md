@@ -46,3 +46,28 @@ ec2.tf
 
 ```
 
+
+## using for_each 
+
+```
+# ami ids 
+variable "my_instances" {
+  default = {
+    ashu-vm1 = "ami-0b016c703b95ecbe4"
+    ashu-vm2 = "ami-0f70b01eb0d5c5caa"
+  }
+  
+}
+
+# creating ec2 
+resource "aws_instance" "example2" {
+  for_each = var.my_instances
+  ami = each.value
+  instance_type = "t2.nano"
+  tags = {
+    Name = each.key
+  }
+  
+}
+
+```
