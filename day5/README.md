@@ -71,3 +71,20 @@ resource "aws_instance" "example2" {
 }
 
 ```
+
+### some commands 
+
+```
+ 1013  terraform apply --auto-approve 
+ 1014  terraform  state list 
+ 1015  terraform  apply 
+ 1016  terraform  output 
+ 1017  terraform state list
+ 1018  terraform  output 
+ 1019  terraform  apply --auto-approve
+ 1020  terraform destroy --auto-approve
+ 1021  terraform  apply -target=aws_instance.example2 
+ 1022  terraform  destroy --auto-approve  -target=aws_instance.example2 
+ 1023  history 
+
+ ```
