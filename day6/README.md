@@ -100,3 +100,50 @@ mkdir  terragrunt-work
     ├── ec2
     └── vpc
 ```
+
+## terragrunt.hcl  in -- the location of infra-live/dev 
+
+```
+# Inherit root settings (remote_state, etc.)
+include {
+  path = find_in_parent_folders()
+}
+
+# Environment-specific locals
+locals {
+  aws_region  = "us-east-2"
+  environment = "dev"
+}
+
+# Pass provider info to modules
+inputs = {
+  region = local.aws_region
+  Env    = local.environment
+}
+
+```
+
+### terragrunt.hcl  in the location of infra-live/dev/vpc
+
+```
+
+terraform {
+  source = "../../../infra-modules/vpc"
+}
+
+inputs = {
+  vpc_name           = "ashu-dev-vpc"
+  vpc_cidr               = "10.0.0.0/16"
+  public_subnet_cidr = "10.0.1.0/24"
+  region             = "ap-south-1"   # provider info
+  tags = {
+    Environment = "dev"
+    Project     = "TerragruntDemo"
+  }
+}
+```
+
+## understanding role and usage of terragrunt.hcl file 
+
+<img src="hcl1.png">
+
