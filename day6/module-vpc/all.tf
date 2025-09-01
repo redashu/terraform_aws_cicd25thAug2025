@@ -17,7 +17,19 @@ variable "private-sb-addr" {
   
 }
 
+variable "region" {
+    type = string
+  
+}
+
+
+
 # step 1  create VPC 
+provider "aws" {
+  region = var.region
+  
+}
+
 resource "aws_vpc" "example" {
     cidr_block = var.vpc-network
     enable_dns_hostnames = true
