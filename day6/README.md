@@ -44,3 +44,14 @@ day6/
 
 <img src="md1.png">
 
+### problem with terraform in case of huge projects or Multi env cases
+
+<img src="md2.png">
+
+## basic intro about Terragrunt
+
+<img src="tg1.png">
+
+## some advantages of terrgrunt 
+
+<img src="tg2.png">
