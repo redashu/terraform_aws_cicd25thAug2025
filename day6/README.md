@@ -39,3 +39,8 @@ day6/
     └── ec2
 
 ```
+
+### Terraform modules type 
+
+<img src="md1.png">
+
