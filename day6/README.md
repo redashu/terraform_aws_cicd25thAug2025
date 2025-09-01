@@ -55,3 +55,48 @@ day6/
 ## some advantages of terrgrunt 
 
 <img src="tg2.png">
+
+### checking terragrunt version 
+
+```
+ec2-user@ip-172-31-41-146 use_modules]$ terragrunt  run --version 
+terragrunt version v0.86.1
+[ec2-user@ip-172-31-41-146 use_modules]$ 
+
+```
+
+## lets start implementing multi environment  directory structure 
+
+```
+mkdir  terragrunt-work
+[ec2-user@ip-172-31-41-146 day6]$ cd terragrunt-work/
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ ls
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ 
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ 
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ mkdir  infra-modules  infra-live 
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ tree .
+.
+├── infra-live
+└── infra-modules
+
+2 directories, 0 files
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ mkdir  infra-modules/{ec2,vpc}
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ tree .
+.
+├── infra-live
+└── infra-modules
+    ├── ec2
+    └── vpc
+
+4 directories, 0 files
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ mkdir  infra-live/{dev,stage,prod}
+[ec2-user@ip-172-31-41-146 terragrunt-work]$ tree .
+.
+├── infra-live
+│   ├── dev
+│   ├── prod
+│   └── stage
+└── infra-modules
+    ├── ec2
+    └── vpc
+```

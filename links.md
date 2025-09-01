@@ -11,3 +11,6 @@
 
 [click](https://registry.terraform.io/browse/providers)
 
+## Terragrunt installation
+
+[click](https://terragrunt.gruntwork.io/docs/getting-started/install/)
