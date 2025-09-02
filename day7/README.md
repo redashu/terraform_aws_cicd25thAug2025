@@ -549,3 +549,37 @@ jobs:
       run: echo "Hello world"
    
 ```
+
+### final yaml file 
+
+```
+# name of pipeline workflow
+name: Ashutoshh terraform workflow 
+# trigger action 
+# when there is a push happen in master branch pipeline gonna trigger
+on: 
+  push:
+    branches: [ "master" ]  
+# jobs what actions we are looking for 
+jobs:
+  infra-build:
+    runs-on: ubuntu-latest 
+    steps: # what exactly you want to run in ubuntu machine 
+    - name: hello world printing 
+      run: echo "Hello world"
+
+    - name: installing terraform 
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.1.7"
+
+    - name: verify terraform installation 
+      run: terraform version 
+
+    # access data 
+    - name: checking data
+      run: | 
+        echo "Hello ${{ secrets.AWS_ACCESS_KEY }}"
+        ls -al
+
+```
