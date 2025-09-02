@@ -381,3 +381,32 @@ ec2-user@ip-172-31-41-146 day7-terragrunt]$ mkdir infra-live/dev/vpc
         └── main.tf
 
 ```
+
+### final structure 
+
+```
+tree 
+.
+├── infra-live
+│   ├── dev
+│   │   ├── ec2
+│   │   │   └── terragrunt.hcl
+│   │   ├── terragrunt.hcl
+│   │   └── vpc
+│   │       └── terragrunt.hcl
+│   ├── prod
+│   │   ├── ec2
+│   │   │   └── terragrunt.hcl
+│   │   ├── terragrunt.hcl
+│   │   └── vpc
+│   │       └── terragrunt.hcl
+│   └── root.hcl
+└── infra-module
+    ├── ec2
+    │   └── main.tf
+    └── vpc
+        └── main.tf
+
+10 directories, 9 files
+
+```
