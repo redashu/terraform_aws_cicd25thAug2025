@@ -352,3 +352,32 @@ inputs = {
   Env    = local.environment
 }
 ```
+
+### final directory structure 
+
+```
+ec2-user@ip-172-31-41-146 day7-terragrunt]$ mkdir infra-live/dev/vpc
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ mkdir infra-live/dev/ec2
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ mkdir infra-live/prod/ec2
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ mkdir infra-live/prod/vpc
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ tree 
+.
+├── infra-live
+│   ├── dev
+│   │   ├── ec2
+│   │   ├── terragrunt.hcl
+│   │   └── vpc
+│   ├── prod
+│   │   ├── ec2
+│   │   ├── terragrunt.hcl
+│   │   └── vpc
+│   └── root.hcl
+└── infra-module
+    ├── ec2
+    │   └── main.tf
+    └── vpc
+        └── main.tf
+
+```
