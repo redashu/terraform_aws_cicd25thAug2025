@@ -467,3 +467,32 @@ inputs = {
 }
 
 ```
+
+## nOw you can  create vpc then ec2 individually 
+
+```
+cd infra-live/dev/vpc
+terragrunt init
+terragrunt plan
+terragrunt apply
+
+```
+
+### deploying all the dev env all together 
+
+```
+[ec2-user@ip-172-31-41-146 dev]$ ls
+ec2  terragrunt.hcl  vpc
+[ec2-user@ip-172-31-41-146 dev]$ terragrunt init --all
+04:44:42.067 INFO   The runner at . will be processed in the following order for command init:
+Group 1
+- Unit ./vpc
+
+Group 2
+- Unit ./ec2
+
+
+==>
+ terragrunt plan   --all
+  terragrunt apply   --all
+```
