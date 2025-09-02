@@ -495,4 +495,14 @@ Group 2
 ==>
  terragrunt plan   --all
   terragrunt apply   --all
+
+
+[ec2-user@ip-172-31-41-146 dev]$ terragrunt destroy    --all
+04:46:47.321 INFO   The runner at . will be processed in the following order for command destroy:
+Group 1
+- Unit ./ec2
+
+Group 2
+- Unit ./vpc
+
 ```
