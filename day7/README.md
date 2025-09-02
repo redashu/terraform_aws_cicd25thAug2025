@@ -524,3 +524,28 @@ jobs:
   infra-app-deploy:  
 
 ```
+
+### giving ci.yaml info 
+
+<img src="ci.png">
+
+
+### actions yaml file 
+
+```
+# name of pipeline workflow
+name: Ashutoshh terraform workflow 
+# trigger action 
+# when there is a push happen in master branch pipeline gonna trigger
+on: 
+  push:
+    branches: [ "master" ]  
+# jobs what actions we are looking for 
+jobs:
+  infra-build:
+    runs-on: ubuntu-latest 
+    steps: # what exactly you want to run in ubuntu machine 
+    - name: hello world printing 
+      run: echo "Hello world"
+   
+```
