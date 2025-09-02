@@ -278,3 +278,77 @@ output "security_group_id" {
 }
 
 ```
+
+### extending infra directory 
+
+```
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ ls
+infra-live  infra-module
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ mkdir  infra-live/dev
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ mkdir  infra-live/prod
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ tree  .
+.
+├── infra-live
+│   ├── dev
+│   ├── prod
+│   └── root.hcl
+└── infra-module
+    ├── ec2
+    │   └── main.tf
+    └── vpc
+        └── main.tf
+
+6 directories, 3 files
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ tree  .
+.
+├── infra-live
+│   ├── dev
+│   ├── prod
+│   └── root.hcl
+└── infra-module
+    ├── ec2
+    │   └── main.tf
+    └── vpc
+        └── main.tf
+
+6 directories, 3 files
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ touch  infra-live/dev/terragrunt.hcl 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ touch  infra-live/prod/terragrunt.hcl 
+[ec2-user@ip-172-31-41-146 day7-terragrunt]$ tree  .
+.
+├── infra-live
+│   ├── dev
+│   │   └── terragrunt.hcl
+│   ├── prod
+│   │   └── terragrunt.hcl
+│   └── root.hcl
+└── infra-module
+    ├── ec2
+    │   └── main.tf
+    └── vpc
+        └── main.tf
+
+6 directories, 5 files
+
+```
+
+### infra-live/dev/terragrunt.hcl 
+
+```
+# Environment-specific locals
+locals {
+  aws_region  = "ap-south-1"
+  environment = "dev"
+}
+
+# Pass provider info to modules
+inputs = {
+  region = local.aws_region
+  Env    = local.environment
+}
+```
