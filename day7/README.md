@@ -410,3 +410,60 @@ tree
 10 directories, 9 files
 
 ```
+### infra-live/dev/vpc/terragrunt.hcl 
+
+```
+include {
+  path = find_in_parent_folders("root.hcl")
+}
+
+terraform {
+  source = "../../../infra-module/vpc"
+}
+
+inputs = {
+  vpc_name           = "ashu-dev-vpc"
+  vpc_cidr               = "172.16.0.0/16"
+  public_subnet_cidr = "172.16.1.0/24"
+  region             = "ap-south-1"   # provider info
+  tags = {
+    Environment = "dev"
+    Project     = "TerragruntDemo"
+  }
+}
+
+```
+
+### infra-live/dev/ec2/terragrunt.hcl 
+
+```
+include {
+  path = find_in_parent_folders("root.hcl")
+}
+
+terraform {
+  source = "../../../infra-module/ec2"
+}
+
+dependency "vpc" {
+  config_path = "../vpc"
+  mock_outputs = {
+    vpc_id        = "vpc-mock-id"
+    public_subnet_id = "subnet-mock-id"
+  }
+}
+
+inputs = {
+  name          = "ashu-dev-ec2"
+  ami_id        = "ami-0861f4e788f5069dd"
+  instance_type = "t3.micro"
+  region        = "ap-south-1"  # provider info
+  vpc_id        = dependency.vpc.outputs.vpc_id
+  subnet_id     = dependency.vpc.outputs.public_subnet_id
+  tags = {
+    Environment = "dev"
+    Project     = "TerragruntDemo"
+  }
+}
+
+```
