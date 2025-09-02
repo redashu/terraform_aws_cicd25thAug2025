@@ -506,3 +506,21 @@ Group 2
 - Unit ./vpc
 
 ```
+
+## github action cicd yaml file overview 
+
+```
+# name of pipeline workflow
+name: Ashutoshh terraform workflow 
+# trigger action 
+# when there is a push happen in master branch pipeline gonna trigger
+on: 
+  push:
+    branches: [ "master" ]  
+# jobs what actions we are looking for 
+jobs:
+  infra-build:
+  infra-check:
+  infra-app-deploy:  
+
+```
