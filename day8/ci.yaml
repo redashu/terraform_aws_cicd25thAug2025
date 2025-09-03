@@ -7,6 +7,7 @@ on:
     branches: [ "master" ]  
 # jobs what actions we are looking for 
 jobs:
+# stage 1 with terraform details 
   infra-build:
     runs-on: ubuntu-latest 
     steps: # what exactly you want to run in ubuntu machine 
@@ -42,7 +43,20 @@ jobs:
         terraform init 
         sleep 1
         terraform plan 
-        terraform  apply --auto-approve 
+        #terraform  destroy --auto-approve 
+  # stage 2 with ansible details
+  infra-configDeploy:
+    runs-on: ubuntu-latest
+    needs: infra-build
+    steps: # what exactly you want to run in ubuntu machine for ansible
+    - name: Install ansible 
+      run: | 
+        sudo apt update 
+        sudo apt install ansible -y 
+    - name: verify ansible version 
+      run: ansible --version 
+
+    
 
 
    

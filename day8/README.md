@@ -43,3 +43,48 @@ ansible-day8/
 [ec2-user@ip-172-31-41-146 ashu-codes]$ 
 
 ```
+
+### understanding ansible CLI 
+
+<img src="cli1.png">
+
+### running ping module in target to check connecting 
+
+```
+[ec2-user@ip-172-31-41-146 ansible-day8]$ ansible  hello  -m ping  -k
+SSH password: 
+[WARNING]: Platform linux on host 172.31.41.146 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.15/reference_appendices/interpreter_discovery.html for more information.
+172.31.41.146 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.9"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+```
+
+### listing down the module 
+
+```
+ec2-user@ip-172-31-41-146 ansible-day8]$ ansible  hello  -m command -a "date"  -k
+SSH password: 
+[WARNING]: Platform linux on host 172.31.41.146 is using the discovered Python interpreter at /usr/bin/python3.9, but future installation of
+another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.15/reference_appendices/interpreter_discovery.html for more information.
+172.31.41.146 | CHANGED | rc=0 >>
+Wed Sep  3 06:07:08 UTC 2025
+[ec2-user@ip-172-31-41-146 ansible-day8]$ ansible-doc  -l  | grep ping 
+ansible.builtin.ping                                                                             Try to connect to host, verify a usable python and re...
+ansible.netcommon.net_ping                                                                       Tests reachability using ping...
+ansible.windows.win_ping                                                                         A windows version of t...
+cisco.ios.ios_ping                                                                               Tests reachability usin...
+cisco.iosxr.iosxr_ping                                                                           Tests reachability using ...
+cisco.ise.licensing_feature_to_tier_mapping_info                                                 Information module for Licensing F...
+cisco.ise.sg_mapping                                                                             Resource...           
+cisco.ise.sg_mapping_bulk_monitor_status_info                                                    Information module for SG Mappi...
+cisco.ise.sg_mapping_bulk_request                           
+
+```
