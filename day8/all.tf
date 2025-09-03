@@ -48,6 +48,18 @@ output "public_Ips" {
   
 }
 
+# creating ansible inventory like file 
+resource "null_resource" "stop_ipaddress" {
+  depends_on = [ aws_instance.example ]
+  provisioner "local-exec" {
+    command = <<EOT
+      echo "[hello]" >ip.txt
+      echo "${join("\n",aws_instance.example[*].public_ip)}" >>ip.txt
+      EOT   
+  }
+  
+}
+
 # storing ips 
 resource "local_file" "example_ips" {
   content = join("\n",aws_instance.example[*].public_ip)
