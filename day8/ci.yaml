@@ -29,6 +29,20 @@ jobs:
       run: | 
         echo "Hello ${{ secrets.AWS_ACCESS_KEY }}"
         ls -al
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4.3.1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: us-east-2
+    - name: running terraform code 
+      run: | 
+        ls -al
+        cd ec2
+        terraform init 
+        sleep 1
+        terraform plan 
+        terraform  apply --auto-approve 
 
 
    
