@@ -88,3 +88,13 @@ cisco.ise.sg_mapping_bulk_monitor_status_info                                   
 cisco.ise.sg_mapping_bulk_request                           
 
 ```
+
+
+### understanding share dynamic content between multi stage in github action 
+### using artifacts 
+
+<img src="art11.png">
+
+### final thing to be done in term of automation with github action + terraform + ansible 
+
+<img src="final.png">

@@ -43,7 +43,13 @@ jobs:
         terraform init 
         sleep 1
         terraform plan 
-        #terraform  destroy --auto-approve 
+        terraform  apply  --auto-approve
+    - name: uploading inventory or any other data to github artifact  
+      uses: actions/upload-artifact@v4
+      with:
+        name: ashu-artifact
+        path: ec2/ip.txt
+  
   # stage 2 with ansible details
   infra-configDeploy:
     runs-on: ubuntu-latest
@@ -55,6 +61,17 @@ jobs:
         sudo apt install ansible -y 
     - name: verify ansible version 
       run: ansible --version 
+
+    - name: download artifact 
+      uses: actions/download-artifact@v5
+      with:
+        name: ashu-artifact
+    
+    - name: verify data 
+      run: |
+        ls -a
+        cat ip.txt 
+
 
     
 
