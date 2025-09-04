@@ -1,0 +1,23 @@
+---
+- name: Setup Apache HTTPD on Amazon Linux
+  hosts: web1   # change to your inventory group or host
+  become: yes         # escalate privilege (sudo)
+
+  tasks:
+    - name: Ensure Apache HTTPD is installed
+      yum:
+        name: httpd
+        state: present
+
+    - name: Ensure Apache HTTPD service is enabled and started
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+
+    - name: Deploy custom index.html
+      copy:
+        dest: /var/www/html/index.html
+        src: ashu.html 
+
