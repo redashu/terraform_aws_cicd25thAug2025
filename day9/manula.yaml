@@ -7,3 +7,32 @@ jobs:
     steps: # what exactly you want to run in ubuntu machine 
     - name: hello world printing 
       run: echo "Hello world"
+
+    - name: installing terraform 
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.1.7"
+
+    - name: verify terraform installation 
+      run: terraform version 
+    # using github action to copy code in runner 
+    - name: using checkout action 
+      uses: actions/checkout@v5
+
+    # access data 
+    - name: checking data
+      run: | 
+        echo "Hello ${{ secrets.AWS_ACCESS_KEY }}"
+        ls -al
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4.3.1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: us-east-2
+    - name: running terraform code 
+      run: | 
+        ls -al
+        cd ec2
+        terraform init 
+        terraform  destroy  --auto-approve
