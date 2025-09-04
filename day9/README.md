@@ -50,3 +50,7 @@ ashu1.html  index.html
 :- this is Policy as Code (rules that must be followed by Infra )
 
 <img src="opa1.png">
+
+## pre-read for tomorrow session 
+
+<img src="pre.png">
