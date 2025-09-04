@@ -35,3 +35,18 @@ ashu1.html  index.html
 [ec2-user@ip-172-31-41-146 ansible-day9]$ 
 
 ```
+
+### project you can try it out
+
+<img src="project1.png">
+
+## Understanding Terraform + prod env related restriction 
+
+
+<img src="rst1.png">
+
+## Understanding OPA (Open policy agent)
+
+:- this is Policy as Code (rules that must be followed by Infra )
+
+<img src="opa1.png">
