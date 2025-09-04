@@ -78,6 +78,12 @@ jobs:
         ls -al ec2 
         ls -al ansible 
         cat ec2/ip.txt 
+    - name: running ansible playbook 
+      run: | 
+        chmod 400 ec2/ashu-privateKey.pem
+        cd ansible
+        ansible-playbook -i ../ec2/ip.txt    webapp-playbook.yaml --private-key ../ec2/ashu-privateKey.pem
+
 
 
     
