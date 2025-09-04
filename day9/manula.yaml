@@ -1,0 +1,9 @@
+name: manual pipeline
+on: 
+  workflow_dispatch: # for manual run 
+jobs:
+  manual-build:
+    runs-on: ubuntu-latest 
+    steps: # what exactly you want to run in ubuntu machine 
+    - name: hello world printing 
+      run: echo "Hello world"

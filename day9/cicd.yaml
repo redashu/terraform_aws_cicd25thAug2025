@@ -5,6 +5,8 @@ name: Ashutoshh terraform workflow
 on: 
   push:
     branches: [ "master" ]  
+    paths-ignore:
+      - "README.md"
 # jobs what actions we are looking for 
 jobs:
 # stage 1 with terraform details 
@@ -73,9 +75,9 @@ jobs:
     - name: verify data 
       run: |
         ls -a
+        ls -al ec2 
+        ls -al ansible 
         cat ec2/ip.txt 
-        ls -al ansible
-        ls -al ec2
 
 
     
