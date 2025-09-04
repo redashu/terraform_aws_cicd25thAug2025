@@ -27,3 +27,11 @@
 ### marketplace for official and contributor actions 
 
 [check](https://github.com/marketplace?type=actions)
+
+## OPA playgroup 
+
+[click_here](https://play.openpolicyagent.org/)
+
+### OPA docs 
+
+[go](https://www.openpolicyagent.org/docs)
