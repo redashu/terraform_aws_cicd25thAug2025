@@ -1,0 +1,82 @@
+# name of pipeline workflow
+name: Ashutoshh terraform workflow 
+# trigger action 
+# when there is a push happen in master branch pipeline gonna trigger
+on: 
+  push:
+    branches: [ "master" ]  
+# jobs what actions we are looking for 
+jobs:
+# stage 1 with terraform details 
+  infra-build:
+    runs-on: ubuntu-latest 
+    steps: # what exactly you want to run in ubuntu machine 
+    - name: hello world printing 
+      run: echo "Hello world"
+
+    - name: installing terraform 
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.1.7"
+
+    - name: verify terraform installation 
+      run: terraform version 
+    # using github action to copy code in runner 
+    - name: using checkout action 
+      uses: actions/checkout@v5
+
+    # access data 
+    - name: checking data
+      run: | 
+        echo "Hello ${{ secrets.AWS_ACCESS_KEY }}"
+        ls -al
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4.3.1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: us-east-2
+    - name: running terraform code 
+      run: | 
+        ls -al
+        cd ec2
+        terraform init 
+        sleep 1
+        terraform plan 
+        terraform  apply  --auto-approve
+    - name: uploading inventory or any other data to github artifact  
+      uses: actions/upload-artifact@v4
+      with:
+        name: ashu-artifact
+        path: |
+          ec2/ip.txt
+          ec2/ashu-privateKey.pem
+          ansible
+  
+  # stage 2 with ansible details
+  infra-configDeploy:
+    runs-on: ubuntu-latest
+    needs: infra-build
+    steps: # what exactly you want to run in ubuntu machine for ansible
+    - name: Install ansible 
+      run: | 
+        sudo apt update 
+        sudo apt install ansible -y 
+    - name: verify ansible version 
+      run: ansible --version 
+
+    - name: download artifact 
+      uses: actions/download-artifact@v5
+      with:
+        name: ashu-artifact
+    
+    - name: verify data 
+      run: |
+        ls -a
+        cat ip.txt 
+
+
+    
+
+
+   
