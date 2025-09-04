@@ -73,7 +73,9 @@ jobs:
     - name: verify data 
       run: |
         ls -a
-        cat ip.txt 
+        cat ec2/ip.txt 
+        ls -al ansible
+        ls -al ec2
 
 
     
