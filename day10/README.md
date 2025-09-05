@@ -108,3 +108,21 @@ main.tf  tfplan.binary  tfplan.json
  1192  opa eval --data s3.rego   --input tfplan.json  "data.terraform.deny"
 
  ```
+
+ ## terraform import understanding 
+
+ <img src="import1.png">
+
+ ### demo with vpc import 
+
+ ```
+ mkdir  vpc_import
+[ec2-user@ip-172-31-41-146 day10-final]$ touch vpc_import/main.tf
+[ec2-user@ip-172-31-41-146 day10-final]$ 
+
+```
+
+###  Project basic understanding 
+
+<img src="project1.png">
+

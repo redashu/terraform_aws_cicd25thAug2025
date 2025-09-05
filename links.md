@@ -39,3 +39,19 @@
 ### Terraform assoicate Exam data link 
 
 [click_here](https://github.com/redashu/terraform-everything.git)
+
+## hashicorp github Education 
+
+[click_here](https://github.com/hashicorp-education)
+
+## hashicorp terraform associates  link 
+
+[click](https://developer.hashicorp.com/terraform/tutorials/certification-003/associate-questions)
+
+
+### incase want to deploy db based webapp then 
+
+[click](https://github.com/redashu/resources.git)
+
+
+
