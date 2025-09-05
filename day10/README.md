@@ -94,3 +94,17 @@ main.tf  tfplan.binary  tfplan.json
 }
 
 ```
+
+### doing the same with  s3 with opa + terraform 
+
+```
+185  terraform init 
+ 1186  ls
+ 1187  terraform plan -out=tfplan.binary 
+ 1188  ls
+ 1189  terraform show -json tfplan.binary  >tfplan.json 
+ 1190  ls
+ 1191  t
+ 1192  opa eval --data s3.rego   --input tfplan.json  "data.terraform.deny"
+
+ ```
