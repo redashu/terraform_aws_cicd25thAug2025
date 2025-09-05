@@ -35,3 +35,7 @@
 ### OPA docs 
 
 [go](https://www.openpolicyagent.org/docs)
+
+### Terraform assoicate Exam data link 
+
+[click_here](https://github.com/redashu/terraform-everything.git)
